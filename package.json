@@ -1,0 +1,29 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "An Amazon like store that works in the command line interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HEIGHTSTONIAN/Bamazon.git"
+  },
+  "author": "HEIGHTSTONIAN",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HEIGHTSTONIAN/Bamazon/issues"
+  },
+  "homepage": "https://github.com/HEIGHTSTONIAN/Bamazon#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "fetch": "^1.1.0",
+    "inquirer": "^3.2.3",
+    "mysql": "^2.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0"
+  }
+}
