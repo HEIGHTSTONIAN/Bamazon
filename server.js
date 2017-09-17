@@ -5,17 +5,19 @@ var inquirer = require('inquirer');
 var express = require('express');
 var bodyParser = require('body-parser');
 
-function handleRequest(req,res,query, arr=[]){
+
+function handleRequest(req,res,query){
     var queryString = query;
-    connection.connect();
-    connection.query(queryString, arr, function(err,data){
+    connection.query(queryString, function(err,data){
         if (err){
+            console.log(err);
             res.send({ err: err });
         }else {
+            console.log(data);
             res.send({ data: data});
         }
     });
-    connection.end();
+
 };
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -30,7 +32,7 @@ var connection = mysql.createConnection({
     database: "bamazon"
   });
   
-
+connection.connect();
 
 
 //function to grab data from database
@@ -50,12 +52,8 @@ app.get("/getproducts", function(req,res){
 });
 
 app.post("/check", function(req,res){
-    console.log(req);
-    /*
-    var queryString = "UPDATE products SET quantity = quantity - ? WHERE quantity >= ? AND id = ?";
-    var arr = [req.body.answers.two, req.body.answers.two, req.body.answers.one];
-    handleRequest(req,res,queryString, arr);
-    */
+    var queryString = `UPDATE products SET stock_quantity = stock_quantity - ${req.body.answers.two} WHERE stock_quantity >= ${req.body.answers.two} AND item_id = ${req.body.answers.one}`;
+    handleRequest(req,res,queryString);
 
 });
 app.listen(3000, function(){

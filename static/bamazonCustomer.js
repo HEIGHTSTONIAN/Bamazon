@@ -1,5 +1,6 @@
 window.onload = function(){
     var list = document.querySelector("#products > ol");
+    var showResult = document.getElementById("showResult");
     var url = '/getproducts';
     var gotResponse = function(res){
         makeList(list,res);
@@ -41,8 +42,17 @@ window.onload = function(){
             }
         };
         axios.post("/check", nodepkg).then(function(res){
-            console.log(res);
-        }).catch(gotErr);
+            console.log(res.data);
+            showResult.style.display = "block";
+            if (res.data.data.affectedRows>0) {
+                showResult.innerHTML="Completed purchase!";
+            }else{
+                showResult.innerHTML="Sorry! Out of Stock.";
+            }
+            
+        }).catch(function (gotErr){
+        showResult.innerHTML= "Server can't contact database. Refresh and try later";
+        });
     });
-};
+}
 
