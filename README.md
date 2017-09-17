@@ -31,6 +31,10 @@ Click the "Buy" button and buyer is prompted with choosing which item to purchas
 Then how many they would like to purchase. 
 ![How many to Purchase](readme_assets/howmanytopurchase.JPG "How many to purchase")
 
+If the buyer purchases items within the number of inventory supply, "Completed Purchase!" will display under the "Buy" button.
+
+![Completed Purchase](readme_assets/purchasecomplete.JPG "Completed Purchase")
+
 If the buyer goes over inventory, the browser will display "out of stock" to the buyer. 
 
 ![Out of Stock](readme_assets/outofstock.JPG "Out of Stock")
